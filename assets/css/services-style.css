@@ -1,0 +1,440 @@
+/* ============================================
+   SERVICES PAGE STYLES
+   ============================================ */
+
+/* PAGE HEADER */
+.page-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2d2d2d 100%);
+  color: var(--text-light);
+  padding: 5rem 2rem;
+  text-align: center;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.page-header p {
+  font-size: 1.3rem;
+  color: #ddd;
+}
+
+.page-header-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.page-header-badges span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(244, 201, 93, 0.35);
+  color: #fff;
+  font-size: 0.92rem;
+}
+
+.page-header-badges i {
+  color: var(--secondary-color);
+}
+
+/* SERVICE SECTIONS */
+.service-section {
+  padding: 5rem 2rem;
+  background-color: var(--bg-light);
+}
+
+.service-section.alternate {
+  background-color: var(--text-light);
+}
+
+.service-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.service-text h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.service-text > p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.service-list {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.service-list li {
+  padding: 0.7rem 0;
+  color: #555;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.service-list i {
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.service-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-visual-card {
+  position: relative;
+  width: min(100%, 380px);
+  min-height: 380px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.18);
+  border: 2px solid rgba(244, 201, 93, 0.5);
+}
+
+.service-visual-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-visual-card:hover img {
+  transform: scale(1.05);
+}
+
+.service-visual-card figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.2rem;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.85) 100%);
+  color: #fff;
+}
+
+.service-visual-card figcaption p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 0.4rem;
+  line-height: 1.6;
+}
+
+.visual-chip {
+  display: inline-flex;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(244, 201, 93, 0.2);
+  border: 1px solid rgba(244, 201, 93, 0.5);
+  color: #fff7d6;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pricing-info {
+  background-color: #f0f0f0;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1.5rem 0;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.pricing-info p {
+  margin: 0.5rem 0;
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+.pricing-info p strong {
+  color: var(--secondary-color);
+}
+
+/* SERVICE HIGHLIGHTS */
+.service-highlights-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(180deg, #fffefb 0%, #fff7eb 100%);
+}
+
+.service-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.highlight-card {
+  background: #fff;
+  padding: 1.8rem;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.08);
+  transition: var(--transition);
+}
+
+.highlight-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 45px rgba(15, 23, 42, 0.12);
+}
+
+.highlight-card i {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.highlight-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.highlight-card p {
+  color: #5a6475;
+  line-height: 1.7;
+}
+
+/* PROCESS SECTION */
+.process-section {
+  padding: 5rem 2rem;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.process-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.process-card:hover {
+  border-color: var(--secondary-color);
+  background: rgba(212, 175, 55, 0.1);
+  transform: translateY(-10px);
+}
+
+.process-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.process-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.process-card p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* PACKAGES SECTION */
+.packages-section {
+  padding: 5rem 2rem;
+  background-color: var(--bg-light);
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.package-card {
+  background: var(--text-light);
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid #eee;
+  transition: var(--transition);
+  position: relative;
+}
+
+.package-card.featured {
+  border-color: var(--secondary-color);
+  transform: scale(1.05);
+  box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+}
+
+.featured-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.package-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.package-card .price {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.package-list {
+  list-style: none;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.package-list li {
+  padding: 0.7rem 0;
+  color: #555;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+.package-list li:last-child {
+  border-bottom: none;
+}
+
+.package-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.package-card.featured:hover {
+  transform: scale(1.1);
+  box-shadow: 0 30px 60px rgba(212, 175, 55, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .page-header p {
+    font-size: 1.1rem;
+  }
+
+  .page-header-badges {
+    justify-content: center;
+  }
+
+  .service-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .service-visual-card,
+  .service-visual-card img {
+    min-height: 250px;
+  }
+
+  .service-section.alternate .service-content {
+    flex-direction: column-reverse;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .package-card.featured {
+    transform: scale(1.02);
+  }
+
+  .package-card:hover {
+    transform: scale(1.02);
+  }
+
+  .package-card.featured:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header {
+    padding: 3rem 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .service-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .service-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .service-text > p {
+    font-size: 1rem;
+  }
+
+  .page-header-badges span {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .service-visual-card,
+  .service-visual-card img {
+    min-height: 210px;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .package-card.featured {
+    transform: scale(1);
+  }
+
+  .package-card:hover {
+    transform: scale(1);
+  }
+}

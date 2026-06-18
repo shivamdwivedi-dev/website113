@@ -1,0 +1,36 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: assets/images
+public_folder: /assets/images
+
+collections:
+  - name: "settings"
+    label: "Website Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "business_config"
+        label: "Contact & Social Details"
+        file: "assets/config/business-config.json"
+        fields:
+          - label: "Business Information"
+            name: "business"
+            widget: "object"
+            fields:
+              - {label: "Studio Name", name: "name", widget: "string"}
+              - {label: "Contact Email", name: "email", widget: "string"}
+              - {label: "Phone Number", name: "phone", widget: "string"}
+              - {label: "WhatsApp Number (No spaces/dashes)", name: "whatsapp", widget: "string"}
+              - {label: "Physical Address", name: "address", widget: "string"}
+              - {label: "Google Maps Latitude", name: "location_lat", widget: "string", required: false}
+              - {label: "Google Maps Longitude", name: "location_lng", widget: "string", required: false}
+          - label: "Social Media Links"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "Instagram Link", name: "instagram", widget: "string"}
+              - {label: "Facebook Link", name: "facebook", widget: "string"}
+              - {label: "YouTube Link", name: "youtube", widget: "string"}

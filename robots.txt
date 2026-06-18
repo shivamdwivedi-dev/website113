@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gamingshivam28.github.io/website113/sitemap.xml
