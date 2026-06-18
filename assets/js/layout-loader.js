@@ -3,6 +3,70 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Inject transition loader HTML immediately
+  const injectTransitionLoader = () => {
+    if (document.getElementById('page-transition-loader')) return;
+    const loaderDiv = document.createElement('div');
+    loaderDiv.id = 'page-transition-loader';
+    loaderDiv.className = 'page-transition-loader';
+    loaderDiv.innerHTML = `
+      <div class="loader-logo">Dolly Digital Studio</div>
+      <div class="loader-shutter"></div>
+    `;
+    document.body.prepend(loaderDiv);
+  };
+
+  injectTransitionLoader();
+
+  // Fade out loader
+  const removeTransitionLoader = () => {
+    const loader = document.getElementById('page-transition-loader');
+    if (loader) {
+      setTimeout(() => {
+        loader.classList.add('fade-out');
+      }, 400);
+    }
+  };
+
+  // Intercept local page transition navigations
+  const setupPageTransitions = () => {
+    document.querySelectorAll('a').forEach(link => {
+      const href = link.getAttribute('href');
+      const target = link.getAttribute('target');
+      
+      if (
+        !href ||
+        href.startsWith('#') ||
+        href.startsWith('mailto:') ||
+        href.startsWith('tel:') ||
+        target === '_blank' ||
+        link.classList.contains('no-transition') ||
+        (href.includes('://') && !href.includes(window.location.hostname))
+      ) {
+        return;
+      }
+
+      link.addEventListener('click', (e) => {
+        // Handle contact anchor redirect exception
+        if (href.includes('#')) {
+          const parts = href.split('#');
+          if (parts[0] === window.location.pathname.split('/').pop()) {
+            return; // let browser scroll natively
+          }
+        }
+        
+        e.preventDefault();
+        const loader = document.getElementById('page-transition-loader');
+        if (loader) {
+          loader.classList.remove('fade-out');
+        }
+        setTimeout(() => {
+          window.location.href = href;
+        }, 400);
+      });
+    });
+  };
+
   // 1. Define targets
   const headerPlaceholder = document.getElementById('site-header');
   const footerPlaceholder = document.getElementById('site-footer');
@@ -28,11 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
         : Promise.resolve();
 
       await Promise.all([headerPromise, footerPromise]);
+      setupPageTransitions();
+      removeTransitionLoader();
       
       // Dispatch event for any page-specific scripts that need to run after header/footer are loaded
       document.dispatchEvent(new CustomEvent('layoutsLoaded'));
     } catch (err) {
       console.error('Error loading modular layouts:', err);
+      removeTransitionLoader();
     }
   };
 

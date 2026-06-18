@@ -428,3 +428,94 @@ footer {
     font-size: 1.5rem;
   }
 }
+
+/* ============================================
+   PREMIUM PAGE TRANSITION SHUTTER LOADER
+   ============================================ */
+
+.page-transition-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--primary-color);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.45s ease;
+}
+
+.page-transition-loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  animation: pulseLogo 1.5s ease-in-out infinite;
+}
+
+.loader-shutter {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border: 4px solid var(--secondary-color);
+  border-radius: 50%;
+  animation: rotateShutter 2s cubic-bezier(0.68, -0.6, 0.32, 1.6) infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(244, 201, 93, 0.3);
+}
+
+.loader-shutter::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gradient-accent);
+  transform: scale(0.8);
+  animation: shutterAperture 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes rotateShutter {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shutterAperture {
+  0% {
+    transform: scale(0.45);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseLogo {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}

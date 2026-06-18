@@ -187,4 +187,89 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   `;
   document.head.appendChild(style);
+
+  // --- PREMIUM LIGHTBOX LOGIC ---
+  const initLightbox = () => {
+    const lightbox = document.createElement('div');
+    lightbox.id = 'portfolio-lightbox';
+    lightbox.className = 'portfolio-lightbox';
+    lightbox.innerHTML = `
+      <div class="lightbox-content">
+        <button class="lightbox-btn lightbox-close" id="lightbox-close" aria-label="Close viewer"><i class="fas fa-times"></i></button>
+        <button class="lightbox-btn lightbox-prev" id="lightbox-prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+        <img src="" alt="Dolly Digital Studio Fullscreen Image" class="lightbox-img" id="lightbox-img">
+        <button class="lightbox-btn lightbox-next" id="lightbox-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    
+    let currentGalleryImages = [];
+    let currentIndex = 0;
+
+    const updateActiveImagesList = () => {
+      currentGalleryImages = Array.from(document.querySelectorAll('.gallery-item:not(.hidden) img'));
+    };
+
+    const openLightbox = (imgSrc, index) => {
+      updateActiveImagesList();
+      currentIndex = index;
+      lightboxImg.src = imgSrc;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        lightboxImg.src = '';
+      }, 300);
+    };
+
+    const showSlide = (dir) => {
+      if (currentGalleryImages.length <= 1) return;
+      currentIndex = (currentIndex + dir + currentGalleryImages.length) % currentGalleryImages.length;
+      lightboxImg.src = currentGalleryImages[currentIndex].src;
+    };
+
+    const galleryItemsList = document.querySelectorAll('.gallery-item');
+    galleryItemsList.forEach((item) => {
+      const clickTarget = item.querySelector('.gallery-overlay') || item;
+      
+      clickTarget.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        updateActiveImagesList();
+        const img = item.querySelector('img');
+        if (!img) return;
+
+        const activeIndex = currentGalleryImages.indexOf(img);
+        openLightbox(img.src, activeIndex !== -1 ? activeIndex : 0);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', () => showSlide(-1));
+    nextBtn.addEventListener('click', () => showSlide(1));
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showSlide(-1);
+      if (e.key === 'ArrowRight') showSlide(1);
+    });
+  };
+
+  initLightbox();
 });
