@@ -658,14 +658,25 @@
     justify-content: center;
   }
 
-  .hero-img {
-    width: 300px;
-    height: 300px;
+  .hero-image {
+    flex-direction: column;
+    height: auto;
+    max-width: 100%;
+    gap: 1.5rem;
+  }
+
+  .hero-slider {
+    width: 100%;
+    max-width: 400px;
+    height: 380px;
   }
 
   .hero-floating-card {
     position: static;
-    margin-top: 1rem;
+    margin: 1rem auto 0;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
   }
 
   .trust-grid {
@@ -711,9 +722,8 @@
     font-size: 1rem;
   }
 
-  .hero-img {
-    width: 250px;
-    height: 250px;
+  .hero-slider {
+    height: 300px;
   }
 
   .hero-badges span {
