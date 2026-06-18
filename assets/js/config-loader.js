@@ -7,7 +7,7 @@ let CONFIG = null;
 
 async function loadConfig() {
   try {
-    const response = await fetch('assets/config/business-config.json');
+    const response = await fetch('/config/business-config.json');
     if (!response.ok) throw new Error('Config not found');
     CONFIG = await response.json();
     applyConfigToDOM();

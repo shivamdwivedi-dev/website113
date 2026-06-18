@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadLayouts = async () => {
     try {
       const headerPromise = headerPlaceholder
-        ? fetch('assets/components/header.html')
+        ? fetch('/components/header.html')
             .then(res => res.text())
             .then(html => {
               headerPlaceholder.innerHTML = html;
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         : Promise.resolve();
 
       const footerPromise = footerPlaceholder
-        ? fetch('assets/components/footer.html')
+        ? fetch('/components/footer.html')
             .then(res => res.text())
             .then(html => {
               footerPlaceholder.innerHTML = html;

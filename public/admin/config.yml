@@ -14,7 +14,7 @@ collections:
     files:
       - name: "business_config"
         label: "Contact & Social Details"
-        file: "assets/config/business-config.json"
+        file: "public/config/business-config.json"
         fields:
           - label: "Business Information"
             name: "business"

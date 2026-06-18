@@ -16,7 +16,7 @@ class FormHandler {
   async init() {
     // Load business config
     try {
-      const response = await fetch('assets/config/business-config.json');
+      const response = await fetch('/config/business-config.json');
       this.config = await response.json();
     } catch (error) {
       console.error('Failed to load config:', error);
