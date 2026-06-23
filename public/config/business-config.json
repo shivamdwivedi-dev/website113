@@ -21,5 +21,97 @@
     "facebook": "https://facebook.com",
     "youtube": "https://youtube.com/"
   },
+  "hero_slides": [
+    {
+      "image": "/assets/images/hero-image.jpeg",
+      "alt": "Best of Weddings - Dolly Digital Studio"
+    },
+    {
+      "image": "/assets/images/image2.jpeg",
+      "alt": "Cinematic Portraits - Dolly Digital Studio"
+    },
+    {
+      "image": "/assets/images/image5.jpeg",
+      "alt": "Scenic Drone Shoots - Dolly Digital Studio"
+    },
+    {
+      "image": "/assets/images/image8.jpeg",
+      "alt": "Creative Event Frames - Dolly Digital Studio"
+    }
+  ],
+  "portfolio_items": [
+    {
+      "image": "/assets/images/hero-image.jpeg",
+      "title": "Best of Weddings",
+      "category": "wedding",
+      "year": "2026"
+    },
+    {
+      "image": "/assets/images/image2.jpeg",
+      "title": "Bride & Groom",
+      "category": "wedding",
+      "year": "2026"
+    },
+    {
+      "image": "/assets/images/image3.jpeg",
+      "title": "Reception Moments",
+      "category": "wedding",
+      "year": "2025"
+    },
+    {
+      "image": "/assets/images/image4.jpeg",
+      "title": "Professional Portrait",
+      "category": "portraits",
+      "year": "2026"
+    },
+    {
+      "image": "/assets/images/image5.jpeg",
+      "title": "Studio Session",
+      "category": "portraits",
+      "year": "2026"
+    },
+    {
+      "image": "/assets/images/image6.jpeg",
+      "title": "Headshot Series",
+      "category": "portraits",
+      "year": "2025"
+    },
+    {
+      "image": "/assets/images/image7.jpeg",
+      "title": "Corporate Event",
+      "category": "events",
+      "year": "2026"
+    },
+    {
+      "image": "/assets/images/image8.jpeg",
+      "title": "Birthday Party",
+      "category": "events",
+      "year": "2026"
+    },
+    {
+      "image": "/assets/images/image9.jpeg",
+      "title": "Celebration",
+      "category": "events",
+      "year": "2025"
+    },
+    {
+      "image": "/assets/images/image10.jpeg",
+      "title": "Aerial Landscape",
+      "category": "drone",
+      "year": "2026"
+    },
+    {
+      "image": "/assets/images/image11.jpeg",
+      "title": "Drone Photography",
+      "category": "drone",
+      "year": "2026"
+    },
+    {
+      "image": "/assets/images/image12.jpeg",
+      "title": "Aerial View",
+      "category": "drone",
+      "year": "2025"
+    }
+  ],
   "_instructions": "TO CUSTOMIZE FOR YOUR BUSINESS: Simply update the values above. The entire website will auto-update. No code changes needed!"
 }

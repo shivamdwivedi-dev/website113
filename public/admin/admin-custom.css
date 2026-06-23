@@ -1,0 +1,175 @@
+/* ==========================================================================
+   PREMIUM CUSTOM STYLES FOR DOLLY DIGITAL STUDIO ADMIN PORTAL
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* GLOBAL RESETS & STYLING */
+body {
+  font-family: 'Outfit', sans-serif !important;
+  background-color: #0b1120 !important;
+  color: #e2e8f0 !important;
+}
+
+/* 1. CUSTOM IDENTITY/LOGIN PANEL STYLING */
+#netlify-identity-widget,
+.netlify-identity-widget {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+/* Netlify Identity Modal Override */
+iframe#netlify-identity-widget {
+  background: rgba(11, 17, 32, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+/* 2. DECAP CMS APPLICATION PANEL OVERRIDES */
+.nc-app-container {
+  background-color: #0b1120 !important;
+}
+
+/* Top Navigation Bar */
+header {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-bottom: 2px solid rgba(244, 201, 93, 0.3) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+header a, header button {
+  color: #f8fbff !important;
+  font-weight: 500 !important;
+}
+
+header a:hover, header button:hover {
+  color: #f4c95d !important;
+}
+
+/* Sidebar Collections Panel */
+aside {
+  background-color: #0f172a !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+aside a {
+  border-radius: 8px !important;
+  margin: 4px 8px !important;
+  padding: 10px 15px !important;
+  color: #94a3b8 !important;
+  transition: all 0.3s ease !important;
+}
+
+aside a.active {
+  background: linear-gradient(135deg, #f4c95d 0%, #ff7a59 100%) !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  box-shadow: 0 8px 20px rgba(244, 201, 93, 0.25) !important;
+}
+
+aside a:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #f8fbff !important;
+}
+
+/* Main Content Area */
+main {
+  background-color: #0b1120 !important;
+}
+
+/* Dashboard Cards (Collection Entries) */
+.nc-collection-page-card {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(8px) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  padding: 16px !important;
+}
+
+.nc-collection-page-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(244, 201, 93, 0.4) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Editor Inputs & Fields */
+.nc-control-pane-widget {
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 10px !important;
+  padding: 20px !important;
+  margin-bottom: 24px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.nc-control-pane-widget:focus-within {
+  border-color: #f4c95d !important;
+  box-shadow: 0 0 15px rgba(244, 201, 93, 0.15) !important;
+}
+
+.nc-control-pane-label {
+  color: #f4c95d !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 10px !important;
+  text-transform: uppercase !important;
+}
+
+/* Text Fields, Textareas, Select Elements */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+  background-color: #0b1120 !important;
+  color: #f8fbff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  font-family: 'Outfit', sans-serif !important;
+  transition: all 0.3s ease !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: #f4c95d !important;
+  box-shadow: 0 0 8px rgba(244, 201, 93, 0.25) !important;
+}
+
+/* Premium Publishing Buttons */
+.nc-app-editor-btn-publish {
+  background: linear-gradient(135deg, #f4c95d 0%, #ff7a59 100%) !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 20px rgba(244, 201, 93, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.nc-app-editor-btn-publish:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 12px 25px rgba(244, 201, 93, 0.45) !important;
+}
+
+/* Media Upload Box */
+.nc-media-library-card {
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 12px !important;
+}
+
+/* Custom list items drag/drop wrappers */
+.nc-list-editor-item {
+  background: rgba(15, 23, 42, 0.3) !important;
+  border: 1px dashed rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  margin-bottom: 16px !important;
+  padding: 16px !important;
+}

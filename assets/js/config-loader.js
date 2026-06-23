@@ -11,6 +11,8 @@ async function loadConfig() {
     if (!response.ok) throw new Error('Config not found');
     CONFIG = await response.json();
     applyConfigToDOM();
+    window.CONFIG = CONFIG;
+    document.dispatchEvent(new CustomEvent('configLoaded', { detail: CONFIG }));
     return CONFIG;
   } catch (error) {
     console.error('Failed to load config:', error);

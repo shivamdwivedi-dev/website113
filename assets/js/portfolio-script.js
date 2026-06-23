@@ -37,31 +37,49 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Enhanced Gallery Filter with smooth animations
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const galleryItems = document.querySelectorAll('.gallery-item');
+  // Render Portfolio Cards Dynamically from Config
+  const renderPortfolio = (config) => {
+    const gallery = document.getElementById('gallery');
+    if (!gallery || !config || !config.portfolio_items) return;
+    
+    gallery.innerHTML = '';
+    
+    config.portfolio_items.forEach((item) => {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = `gallery-item ${item.category}`;
+      itemDiv.dataset.category = item.category;
+      
+      itemDiv.innerHTML = `
+        <div class="gallery-image">
+          <img src="${item.image}" alt="${item.title}" loading="lazy">
+        </div>
+        <div class="gallery-overlay">
+          <h3>${item.title}</h3>
+          <p>${item.year}</p>
+        </div>
+      `;
+      gallery.appendChild(itemDiv);
+    });
+  };
 
-  filterButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      // Remove active class from all buttons
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      // Add active class to clicked button
-      this.classList.add('active');
-      this.style.transform = 'scale(1.05)';
-      setTimeout(() => { this.style.transform = 'scale(1)'; }, 200);
+  const initGalleryAndObserver = (config) => {
+    renderPortfolio(config);
 
-      const filterValue = this.getAttribute('data-filter');
+    // Enhanced Gallery Filter with smooth animations
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
-      galleryItems.forEach((item, index) => {
-        if (filterValue === 'all') {
-          item.style.animation = 'none';
-          item.classList.remove('hidden');
-          item.style.display = 'block';
-          setTimeout(() => {
-            item.style.animation = `galleryFadeIn 0.5s ease ${index * 50}ms forwards`;
-          }, 10);
-        } else {
-          if (item.classList.contains(filterValue)) {
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        this.style.transform = 'scale(1.05)';
+        setTimeout(() => { this.style.transform = 'scale(1)'; }, 200);
+
+        const filterValue = this.getAttribute('data-filter');
+
+        galleryItems.forEach((item, index) => {
+          if (filterValue === 'all') {
             item.style.animation = 'none';
             item.classList.remove('hidden');
             item.style.display = 'block';
@@ -69,47 +87,67 @@ document.addEventListener('DOMContentLoaded', function() {
               item.style.animation = `galleryFadeIn 0.5s ease ${index * 50}ms forwards`;
             }, 10);
           } else {
-            item.classList.add('hidden');
-            item.style.animation = 'galleryFadeOut 0.3s ease forwards';
-            setTimeout(() => {
-              item.style.display = 'none';
-            }, 300);
+            if (item.classList.contains(filterValue)) {
+              item.style.animation = 'none';
+              item.classList.remove('hidden');
+              item.style.display = 'block';
+              setTimeout(() => {
+                item.style.animation = `galleryFadeIn 0.5s ease ${index * 50}ms forwards`;
+              }, 10);
+            } else {
+              item.classList.add('hidden');
+              item.style.animation = 'galleryFadeOut 0.3s ease forwards';
+              setTimeout(() => {
+                item.style.display = 'none';
+              }, 300);
+            }
           }
-        }
+        });
       });
     });
-  });
 
-  // Enhanced Intersection Observer with delayed animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    // Enhanced Intersection Observer with delayed animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    let cardIndex = 0;
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = (cardIndex % 4) * 100;
+          entry.target.style.animationDelay = delay + 'ms';
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+        cardIndex++;
+      });
+    }, observerOptions);
+
+    // Observe stat cards and add hover effects
+    const statCards = document.querySelectorAll('.stat-card');
+    statCards.forEach(card => {
+      observer.observe(card);
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Trigger lightbox initialization
+    initLightbox();
   };
 
-  let cardIndex = 0;
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const delay = (cardIndex % 4) * 100;
-        entry.target.style.animationDelay = delay + 'ms';
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-      cardIndex++;
+  if (window.CONFIG) {
+    initGalleryAndObserver(window.CONFIG);
+  } else {
+    document.addEventListener('configLoaded', (e) => {
+      initGalleryAndObserver(e.detail);
     });
-  }, observerOptions);
-
-  // Observe stat cards and add hover effects
-  const statCards = document.querySelectorAll('.stat-card');
-  statCards.forEach(card => {
-    observer.observe(card);
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-8px) scale(1.02)';
-    });
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0) scale(1)';
-    });
-  });
+  }
 
   // Add enhanced animations and styles
   const style = document.createElement('style');

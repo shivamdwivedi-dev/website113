@@ -110,12 +110,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Hero Slider Logic
-  const slider = document.getElementById('hero-slider');
-  if (slider) {
-    const slides = slider.querySelectorAll('.slide');
-    const dots = slider.querySelectorAll('.dot');
+  const initHeroSlider = (config) => {
+    const slider = document.getElementById('hero-slider');
+    if (!slider || !config || !config.hero_slides) return;
+    
     const prevBtn = document.getElementById('slider-prev');
     const nextBtn = document.getElementById('slider-next');
+    const dotsContainer = document.getElementById('slider-dots');
+    
+    // Clear old slides (remove divs with class 'slide')
+    slider.querySelectorAll('.slide').forEach(s => s.remove());
+    if (dotsContainer) dotsContainer.innerHTML = '';
+    
+    config.hero_slides.forEach((slideData, idx) => {
+      const slideDiv = document.createElement('div');
+      slideDiv.className = `slide ${idx === 0 ? 'active' : ''}`;
+      
+      const img = document.createElement('img');
+      img.src = slideData.image;
+      img.alt = slideData.alt || 'Dolly Digital Studio Shot';
+      img.className = 'hero-img';
+      img.width = 800;
+      img.height = 800;
+      img.loading = idx === 0 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      if (idx === 0) img.setAttribute('fetchpriority', 'high');
+      
+      slideDiv.appendChild(img);
+      slider.insertBefore(slideDiv, prevBtn);
+      
+      if (dotsContainer) {
+        const dotSpan = document.createElement('span');
+        dotSpan.className = `dot ${idx === 0 ? 'active' : ''}`;
+        dotSpan.dataset.index = idx;
+        dotSpan.setAttribute('role', 'button');
+        dotSpan.setAttribute('aria-label', `Slide ${idx + 1}`);
+        dotsContainer.appendChild(dotSpan);
+      }
+    });
+
+    const slides = slider.querySelectorAll('.slide');
+    const dots = slider.querySelectorAll('.dot');
     let currentIndex = 0;
     let autoPlayTimer = null;
 
@@ -158,6 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.addEventListener('mouseleave', startAutoPlay);
 
     startAutoPlay();
+  };
+
+  if (window.CONFIG) {
+    initHeroSlider(window.CONFIG);
+  } else {
+    document.addEventListener('configLoaded', (e) => {
+      initHeroSlider(e.detail);
+    });
   }
 
   const hero = document.querySelector('.hero');

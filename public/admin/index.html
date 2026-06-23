@@ -6,9 +6,14 @@
   <title>Content Manager - Dolly Digital Studio</title>
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Custom Premium Theme Styling -->
+  <link rel="stylesheet" href="/admin/admin-custom.css" />
 </head>
 <body>
   <!-- Decap CMS JavaScript CDN -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    CMS.registerPreviewStyle("/admin/admin-custom.css");
+  </script>
 </body>
 </html>

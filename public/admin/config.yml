@@ -34,3 +34,19 @@ collections:
               - {label: "Instagram Link", name: "instagram", widget: "string"}
               - {label: "Facebook Link", name: "facebook", widget: "string"}
               - {label: "YouTube Link", name: "youtube", widget: "string"}
+          - label: "Homepage Hero Slider"
+            name: "hero_slides"
+            widget: "list"
+            summary: "{{fields.alt}}"
+            fields:
+              - {label: "Slide Image", name: "image", widget: "image"}
+              - {label: "Image Description", name: "alt", widget: "string"}
+          - label: "Portfolio Gallery Items"
+            name: "portfolio_items"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.category}})"
+            fields:
+              - {label: "Photo", name: "image", widget: "image"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Category", name: "category", widget: "select", options: [{"label": "Weddings", "value": "wedding"}, {"label": "Portraits", "value": "portraits"}, {"label": "Events", "value": "events"}, {"label": "Drone Photography", "value": "drone"}]}
+              - {label: "Year", name: "year", widget: "string"}
