@@ -3,17 +3,91 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager - Dolly Digital Studio</title>
+  <title>Dolly Digital Studio - Premium Admin</title>
+  
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <!-- Custom Premium Theme Styling -->
-  <link rel="stylesheet" href="/admin/admin-custom.css?v=3" />
+  
+  <!-- Peak Level CSS -->
+  <link rel="stylesheet" href="/admin/admin-custom.css?v=5" />
 </head>
-<body style="background-color: #09090b;">
+<body>
+
+  <!-- Animated Mesh Background -->
+  <div class="mesh-bg"></div>
+
+  <!-- Ultra Premium Welcome Loader -->
+  <div id="peak-loader">
+    <div class="loader-ring"></div>
+    <h1>Dolly Digital Studio</h1>
+  </div>
+
   <!-- Decap CMS JavaScript CDN -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
   <script>
-    CMS.registerPreviewStyle("/admin/admin-custom.css?v=3");
+    // 1. Register CMS Preview Styles
+    CMS.registerPreviewStyle("/admin/admin-custom.css?v=5");
+
+    // 2. Premium Loader Sequence
+    window.addEventListener('load', () => {
+      // Keep loader up for a moment to hide CMS jank, then fade out
+      setTimeout(() => {
+        const loader = document.getElementById('peak-loader');
+        if (loader) {
+          loader.style.opacity = '0';
+          setTimeout(() => loader.remove(), 1000);
+        }
+      }, 2000);
+    });
+
+    // 3. Peak Level DOM Override Engine
+    // This constantly runs in the background and forcefully converts Decap CMS white panels into glassmorphism
+    const observer = new MutationObserver(() => {
+      const root = document.getElementById('nc-root');
+      if (!root) return;
+
+      // Ensure the very root wrapper is transparent so the mesh background shows
+      const appContainer = root.firstElementChild;
+      if (appContainer) {
+        appContainer.style.setProperty('background-color', 'transparent', 'important');
+        if (appContainer.firstElementChild) {
+          appContainer.firstElementChild.style.setProperty('background-color', 'transparent', 'important');
+        }
+      }
+
+      // Convert any white/grey CMS panels into Glass panels dynamically
+      const layoutElements = root.querySelectorAll('div, main, aside, section, header, a');
+      layoutElements.forEach(el => {
+        const style = window.getComputedStyle(el);
+        const bg = style.backgroundColor;
+        
+        // If the CMS rendered a bright background (white, off-white, light gray)
+        if (
+          bg === 'rgb(255, 255, 255)' || 
+          bg === 'rgb(250, 250, 250)' || 
+          bg === 'rgb(244, 246, 248)' ||
+          bg === 'rgb(239, 241, 245)'
+        ) {
+          // Force inject glassmorphism
+          el.style.setProperty('background-color', 'rgba(15, 23, 42, 0.4)', 'important');
+          el.style.setProperty('backdrop-filter', 'blur(16px)', 'important');
+          el.style.setProperty('-webkit-backdrop-filter', 'blur(16px)', 'important');
+          el.style.setProperty('border', '1px solid rgba(255, 255, 255, 0.1)', 'important');
+          el.style.setProperty('box-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.3)', 'important');
+          el.style.setProperty('color', '#f8fbff', 'important');
+          
+          // Add a subtle transition if it doesn't have one
+          if (style.transition === 'all 0s ease 0s' || style.transition === '') {
+             el.style.setProperty('transition', 'all 0.3s ease', 'important');
+          }
+        }
+      });
+    });
+
+    // Start the aggressively styled mutation observer
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+
   </script>
 </body>
 </html>

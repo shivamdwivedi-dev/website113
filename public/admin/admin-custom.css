@@ -1,125 +1,161 @@
 /* ==========================================================================
-   ULTRA PREMIUM MINIMALIST STYLES (OVERRIDING EMOTION CSS)
+   PEAK LEVEL 1 LAKH PREMIUM STYLES (JS-ASSISTED)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-main: #09090b; 
-  --bg-panel: #18181b; 
-  --bg-panel-hover: #27272a; 
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-focus: rgba(255, 255, 255, 0.25);
-  --text-primary: #fafafa; 
-  --text-secondary: #a1a1aa; 
+  --neon-gold: #f4c95d;
+  --neon-orange: #ff7a59;
+  --glass-bg: rgba(15, 23, 42, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-glow: rgba(244, 201, 93, 0.5);
+  --text-main: #f8fbff;
+  --text-muted: #94a3b8;
 }
 
-/* Global resets for the Decap container */
 body, html {
-  background-color: var(--bg-main) !important;
-  color: var(--text-primary) !important;
-  font-family: 'Inter', -apple-system, sans-serif !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Outfit', sans-serif !important;
+  color: var(--text-main) !important;
+  background-color: #0b1120 !important;
+  overflow-x: hidden;
 }
 
-#nc-root {
-  background-color: var(--bg-main) !important;
-  color: var(--text-primary) !important;
+/* =========================================
+   ANIMATED BACKGROUND MESH
+   ========================================= */
+.mesh-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(125deg, #0f172a, #0b1120, #1e1b4b, #2e1065);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
 }
 
-/* Force dark mode on ALL major layout containers */
-#nc-root > div,
-#nc-root > div > div,
-#nc-root > div > div > div,
-#nc-root main,
-#nc-root aside,
-#nc-root header {
-  background-color: var(--bg-main) !important;
-  color: var(--text-primary) !important;
-  border-color: var(--border-subtle) !important;
+.mesh-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(244, 201, 93, 0.15) 0%, transparent 60%);
+  animation: pulseGlow 8s ease-in-out infinite alternate;
 }
 
-/* 1. TOP HEADER NAVIGATION */
-#nc-root header {
-  background: rgba(9, 9, 11, 0.8) !important;
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 1; }
+}
+
+/* =========================================
+   CUSTOM LOADER
+   ========================================= */
+#peak-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0b1120;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loader-ring {
+  width: 80px;
+  height: 80px;
+  border: 3px solid rgba(255,255,255,0.1);
+  border-top-color: var(--neon-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(244, 201, 93, 0.2);
+}
+
+#peak-loader h1 {
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, var(--neon-gold), var(--neon-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pulseText 2s ease-in-out infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes pulseText {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; filter: drop-shadow(0 0 8px rgba(244,201,93,0.5)); }
+}
+
+/* =========================================
+   GLASSMORPHISM UTILITIES (Applied via JS)
+   ========================================= */
+.peak-glass {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.peak-glass-header {
+  background: rgba(11, 17, 32, 0.7) !important;
+  backdrop-filter: blur(24px) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.peak-glass-card {
+  background: rgba(30, 41, 59, 0.4) !important;
   backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid var(--border-subtle) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
-#nc-root header a, 
-#nc-root header button,
-#nc-root header span {
-  color: var(--text-primary) !important;
-  font-family: 'Inter', sans-serif !important;
+.peak-glass-card:hover {
+  transform: translateY(-5px) scale(1.02) !important;
+  border-color: var(--glass-border-glow) !important;
+  box-shadow: 0 15px 35px rgba(244, 201, 93, 0.2) !important;
 }
 
-/* 2. SIDEBAR */
-#nc-root aside {
-  border-right: 1px solid var(--border-subtle) !important;
+/* =========================================
+   GLOBAL OVERRIDES FOR CMS ELEMENTS
+   ========================================= */
+#nc-root {
+  background: transparent !important;
+  color: var(--text-main) !important;
 }
 
-#nc-root aside a {
-  color: var(--text-secondary) !important;
-  border-radius: 6px !important;
-  transition: all 0.2s ease !important;
+#nc-root h1, #nc-root h2, #nc-root h3, #nc-root span, #nc-root p, #nc-root label {
+  color: var(--text-main) !important;
+  font-family: 'Outfit', sans-serif !important;
 }
 
-/* Sidebar active link */
-#nc-root aside a[aria-current="page"],
-#nc-root aside a.active {
-  background-color: var(--bg-panel) !important;
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-subtle) !important;
-}
-
-/* 3. COLLECTION CARDS (Main Dashboard) */
-/* The cards are typically 'a' tags inside the main area */
-#nc-root main a {
-  background-color: var(--bg-panel) !important;
-  border: 1px solid var(--border-subtle) !important;
-  border-radius: 8px !important;
-  color: var(--text-primary) !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
-}
-
-#nc-root main a:hover {
-  background-color: var(--bg-panel-hover) !important;
-  border-color: var(--border-focus) !important;
-  transform: translateY(-2px) !important;
-}
-
-#nc-root main h2, 
-#nc-root main h3, 
-#nc-root main span {
-  color: var(--text-primary) !important;
-}
-
-/* 4. EDITOR VIEW (Writing Page) */
-/* The white pane behind the inputs */
-#nc-root [role="main"] > div {
-  background-color: var(--bg-main) !important;
-}
-
-/* Editor Toolbar */
-#nc-root [role="main"] header {
-  background-color: var(--bg-main) !important;
-  border-bottom: 1px solid var(--border-subtle) !important;
-}
-
-/* Labels and Field Headers */
-#nc-root label,
-#nc-root label span {
-  color: var(--text-secondary) !important;
-  background-color: transparent !important;
-  font-weight: 500 !important;
-}
-
-/* Field grouping (gray boxes) */
-#nc-root [role="main"] div > div > div {
-  border-color: var(--border-subtle) !important;
-  background-color: transparent !important;
-}
-#nc-root [role="main"] div > div > div > div {
-  background-color: transparent !important;
+#nc-root label {
+  color: var(--neon-gold) !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem !important;
 }
 
 /* Inputs */
@@ -129,87 +165,80 @@ body, html {
 #nc-root textarea,
 #nc-root select,
 #nc-root [role="textbox"] {
-  background-color: var(--bg-panel) !important;
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-subtle) !important;
-  border-radius: 6px !important;
-  padding: 12px !important;
-  font-family: 'Inter', sans-serif !important;
+  background: rgba(15, 23, 42, 0.6) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 8px !important;
+  padding: 14px 18px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 1rem !important;
+  transition: all 0.3s ease !important;
 }
 
 #nc-root input:focus,
 #nc-root textarea:focus,
 #nc-root select:focus,
 #nc-root [role="textbox"]:focus {
-  border-color: var(--border-focus) !important;
   outline: none !important;
-  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--neon-gold) !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+  box-shadow: 0 0 15px rgba(244, 201, 93, 0.3) !important;
 }
 
-/* 5. BUTTONS */
+/* Buttons */
 #nc-root button {
-  background-color: var(--bg-panel) !important;
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-subtle) !important;
-  border-radius: 6px !important;
-  font-family: 'Inter', sans-serif !important;
-  transition: all 0.2s ease !important;
+  background: rgba(30, 41, 59, 0.6) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 8px !important;
+  padding: 10px 20px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: blur(8px) !important;
+  cursor: pointer !important;
 }
 
 #nc-root button:hover {
-  background-color: var(--bg-panel-hover) !important;
-  border-color: var(--border-focus) !important;
+  background: rgba(244, 201, 93, 0.1) !important;
+  border-color: var(--neon-gold) !important;
+  box-shadow: 0 0 20px rgba(244, 201, 93, 0.4) !important;
+  transform: translateY(-2px) !important;
 }
 
-/* Primary "Publish" or "Save" buttons */
+/* Primary Action Buttons */
 #nc-root button[color="primary"],
 #nc-root button:has(span:contains("Publish")),
 #nc-root button:has(span:contains("Save")) {
-  background-color: var(--text-primary) !important;
-  color: var(--bg-main) !important;
-  font-weight: 600 !important;
+  background: linear-gradient(135deg, var(--neon-gold), var(--neon-orange)) !important;
+  color: #0f172a !important;
+  border: none !important;
+  box-shadow: 0 10px 20px rgba(244, 201, 93, 0.4) !important;
 }
 
 #nc-root button[color="primary"]:hover {
-  background-color: #fff !important;
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 15px 30px rgba(244, 201, 93, 0.6) !important;
 }
 
-/* 6. MEDIA LIBRARY MODAL */
-#nc-root [role="dialog"] {
-  background-color: var(--bg-panel) !important;
-  border: 1px solid var(--border-subtle) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(11, 17, 32, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-gold), var(--neon-orange));
+  border-radius: 10px;
+  border: 2px solid #0b1120;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--neon-orange), var(--neon-gold));
 }
 
-#nc-root [role="dialog"] header,
-#nc-root [role="dialog"] footer {
-  background-color: transparent !important;
-  border-color: var(--border-subtle) !important;
-}
-
-#nc-root [role="dialog"] h1,
-#nc-root [role="dialog"] h2,
-#nc-root [role="dialog"] div {
-  color: var(--text-primary) !important;
-  background-color: transparent !important;
-}
-
-/* Media Cards */
-#nc-root [role="dialog"] [role="button"] {
-  background-color: var(--bg-main) !important;
-  border: 1px solid var(--border-subtle) !important;
-  border-radius: 8px !important;
-}
-
-#nc-root [role="dialog"] [role="button"]:hover {
-  border-color: var(--border-focus) !important;
-}
-
-/* Generic Fallback for unstyled white boxes */
-#nc-root div[style*="background-color: white"],
-#nc-root div[style*="background-color: rgb(255, 255, 255)"],
-#nc-root div[style*="background-color:#fff"],
-#nc-root div[style*="background-color: #fff"] {
-  background-color: var(--bg-panel) !important;
+/* Identity Modal */
+iframe#netlify-identity-widget {
+  background: rgba(11, 17, 32, 0.85) !important;
+  backdrop-filter: blur(30px) !important;
 }
