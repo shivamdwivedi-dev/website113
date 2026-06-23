@@ -240,30 +240,79 @@ body, html {
   border-color: var(--secondary-color) !important;
 }
 
-/* 8. MOBILE RESPONSIVENESS */
-@media (max-width: 768px) {
+/* 8. MOBILE & RESPONSIVE FIXES */
+@media (max-width: 1024px) {
+  /* Ensure the main wrapper flexes properly on tablets/mobile */
   #nc-root > div > div {
     display: flex !important;
     flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
-  
+
+  /* Reset Sidebar */
   #nc-root aside {
     width: 100% !important;
     max-width: 100% !important;
     border-right: none !important;
     border-bottom: 1px solid var(--border-color) !important;
     padding-right: 0 !important;
-    padding-bottom: 20px !important;
-    margin-bottom: 20px !important;
+    padding-bottom: 15px !important;
+    margin-bottom: 15px !important;
   }
-  
+
+  /* Reset Main Dashboard Area */
   #nc-root main {
     width: 100% !important;
     max-width: 100% !important;
     padding: 0 !important;
+    margin: 0 !important;
   }
-  
+}
+
+@media (max-width: 768px) {
+  /* CRITICAL: Fix squished Editor layout on mobile */
+  #nc-root [role="main"],
+  #nc-root [role="main"] > div,
+  #nc-root [role="main"] > div > div,
+  #nc-root [role="main"] > div > div > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Give the main editor wrapper some breathing room */
+  #nc-root [role="main"] > div {
+    padding: 0 10px !important;
+  }
+
+  /* Fix list widgets overflowing */
+  #nc-root [role="main"] div[class*="ControlContainer"] {
+    padding: 10px !important;
+  }
+
   #nc-root main a {
     margin-bottom: 15px !important;
+  }
+  
+  /* Fix header actions toolbar */
+  #nc-root [role="main"] header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    height: auto !important;
+    padding: 15px !important;
+    gap: 10px !important;
+  }
+  
+  #nc-root [role="main"] header > div {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
   }
 }
