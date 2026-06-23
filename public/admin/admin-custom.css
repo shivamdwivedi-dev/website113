@@ -1,161 +1,147 @@
 /* ==========================================================================
-   PEAK LEVEL 1 LAKH PREMIUM STYLES (JS-ASSISTED)
+   DOLLY DIGITAL STUDIO - MAIN WEBSITE THEME OVERRIDES
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --neon-gold: #f4c95d;
-  --neon-orange: #ff7a59;
-  --glass-bg: rgba(15, 23, 42, 0.4);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-border-glow: rgba(244, 201, 93, 0.5);
-  --text-main: #f8fbff;
-  --text-muted: #94a3b8;
+  --primary-color: #0f172a;
+  --secondary-color: #f4c95d;
+  --accent-color: #ff7a59;
+  --text-light: #ffffff;
+  --text-dark: #182033;
+  --text-muted: #52607a;
+  --bg-dark: #0b1120;
+  --bg-light: #f7f9fc;
+  --bg-card: #ffffff;
+  --border-color: rgba(15, 23, 42, 0.12);
+  --shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --shadow-hover: 0 20px 50px rgba(15, 23, 42, 0.12);
+  --gradient-accent: linear-gradient(135deg, #f4c95d 0%, #ffb15a 48%, #ff7a59 100%);
 }
 
 body, html {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  font-family: 'Outfit', sans-serif !important;
-  color: var(--text-main) !important;
-  background-color: #0b1120 !important;
-  overflow-x: hidden;
+  min-height: 100vh;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif !important;
+  color: var(--text-dark) !important;
+  background: linear-gradient(180deg, #fffdf8 0%, #f7f9fc 55%, #eef3fb 100%) !important;
+  background-attachment: fixed !important;
 }
 
-/* =========================================
-   ANIMATED BACKGROUND MESH
-   ========================================= */
-.mesh-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background: linear-gradient(125deg, #0f172a, #0b1120, #1e1b4b, #2e1065);
-  background-size: 400% 400%;
-  animation: gradientFlow 15s ease infinite;
-}
-
-.mesh-bg::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(244, 201, 93, 0.15) 0%, transparent 60%);
-  animation: pulseGlow 8s ease-in-out infinite alternate;
-}
-
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes pulseGlow {
-  0% { transform: scale(1); opacity: 0.5; }
-  100% { transform: scale(1.5); opacity: 1; }
-}
-
-/* =========================================
-   CUSTOM LOADER
-   ========================================= */
-#peak-loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #0b1120;
-  z-index: 999999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.loader-ring {
-  width: 80px;
-  height: 80px;
-  border: 3px solid rgba(255,255,255,0.1);
-  border-top-color: var(--neon-gold);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
-  box-shadow: 0 0 20px rgba(244, 201, 93, 0.2);
-}
-
-#peak-loader h1 {
-  font-size: 1.5rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  background: linear-gradient(to right, var(--neon-gold), var(--neon-orange));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: pulseText 2s ease-in-out infinite;
-}
-
-@keyframes spin { 100% { transform: rotate(360deg); } }
-@keyframes pulseText {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; filter: drop-shadow(0 0 8px rgba(244,201,93,0.5)); }
-}
-
-/* =========================================
-   GLASSMORPHISM UTILITIES (Applied via JS)
-   ========================================= */
-.peak-glass {
-  background: var(--glass-bg) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid var(--glass-border) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
-}
-
-.peak-glass-header {
-  background: rgba(11, 17, 32, 0.7) !important;
-  backdrop-filter: blur(24px) !important;
-  border-bottom: 1px solid var(--glass-border) !important;
-}
-
-.peak-glass-card {
-  background: rgba(30, 41, 59, 0.4) !important;
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid var(--glass-border) !important;
-  border-radius: 12px !important;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-}
-
-.peak-glass-card:hover {
-  transform: translateY(-5px) scale(1.02) !important;
-  border-color: var(--glass-border-glow) !important;
-  box-shadow: 0 15px 35px rgba(244, 201, 93, 0.2) !important;
-}
-
-/* =========================================
-   GLOBAL OVERRIDES FOR CMS ELEMENTS
-   ========================================= */
 #nc-root {
   background: transparent !important;
-  color: var(--text-main) !important;
+  color: var(--text-dark) !important;
 }
 
-#nc-root h1, #nc-root h2, #nc-root h3, #nc-root span, #nc-root p, #nc-root label {
-  color: var(--text-main) !important;
-  font-family: 'Outfit', sans-serif !important;
+/* 1. CENTER-ORIENTED LAYOUT CONTAINER */
+#nc-root > div {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  background: transparent !important;
+  padding: 0 1rem !important;
 }
 
-#nc-root label {
-  color: var(--neon-gold) !important;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-size: 0.85rem !important;
+/* 2. TOP HEADER NAVIGATION */
+#nc-root header {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+  border-radius: 0 0 12px 12px !important;
+  margin-bottom: 20px !important;
+}
+
+#nc-root header a, 
+#nc-root header button,
+#nc-root header span {
+  color: var(--text-dark) !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+/* 3. SIDEBAR */
+#nc-root aside {
+  background: transparent !important;
+  border-right: none !important;
+  padding-right: 20px !important;
+}
+
+#nc-root aside a {
+  color: var(--text-muted) !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  padding: 10px 15px !important;
+  font-weight: 500 !important;
+}
+
+#nc-root aside a[aria-current="page"],
+#nc-root aside a.active {
+  background-color: var(--bg-card) !important;
+  color: var(--primary-color) !important;
+  box-shadow: var(--shadow) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+#nc-root aside a:hover:not(.active) {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+/* 4. MAIN DASHBOARD CONTENT & CARDS */
+#nc-root main {
+  background: transparent !important;
+}
+
+#nc-root main h2, 
+#nc-root main h3, 
+#nc-root main span {
+  color: var(--primary-color) !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+#nc-root main a {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  color: var(--primary-color) !important;
+  box-shadow: var(--shadow) !important;
+  transition: all 0.3s ease !important;
+}
+
+#nc-root main a:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border-color: rgba(244, 201, 93, 0.5) !important;
+}
+
+/* 5. EDITOR VIEW (Writing Page) */
+#nc-root [role="main"] > div {
+  background: transparent !important;
+}
+
+#nc-root [role="main"] header {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  margin-bottom: 20px !important;
+}
+
+#nc-root label,
+#nc-root label span {
+  color: var(--text-dark) !important;
+  font-weight: 600 !important;
+  background: transparent !important;
+  font-size: 0.9rem !important;
+}
+
+#nc-root [role="main"] div > div > div {
+  border-color: var(--border-color) !important;
+  background-color: transparent !important;
+}
+#nc-root [role="main"] div > div > div > div {
+  background-color: transparent !important;
 }
 
 /* Inputs */
@@ -165,13 +151,13 @@ body, html {
 #nc-root textarea,
 #nc-root select,
 #nc-root [role="textbox"] {
-  background: rgba(15, 23, 42, 0.6) !important;
-  color: var(--text-main) !important;
-  border: 1px solid var(--glass-border) !important;
+  background-color: var(--bg-card) !important;
+  color: var(--text-dark) !important;
+  border: 1px solid var(--border-color) !important;
   border-radius: 8px !important;
-  padding: 14px 18px !important;
-  font-family: 'Outfit', sans-serif !important;
-  font-size: 1rem !important;
+  padding: 12px 16px !important;
+  font-family: 'Poppins', sans-serif !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02) !important;
   transition: all 0.3s ease !important;
 }
 
@@ -180,65 +166,104 @@ body, html {
 #nc-root select:focus,
 #nc-root [role="textbox"]:focus {
   outline: none !important;
-  border-color: var(--neon-gold) !important;
-  background: rgba(15, 23, 42, 0.8) !important;
-  box-shadow: 0 0 15px rgba(244, 201, 93, 0.3) !important;
+  border-color: var(--secondary-color) !important;
+  box-shadow: 0 0 0 3px rgba(244, 201, 93, 0.2) !important;
+  background-color: #fff !important;
 }
 
-/* Buttons */
+/* 6. BUTTONS */
 #nc-root button {
-  background: rgba(30, 41, 59, 0.6) !important;
-  color: var(--text-main) !important;
-  border: 1px solid var(--glass-border) !important;
-  border-radius: 8px !important;
-  padding: 10px 20px !important;
+  background-color: #fff !important;
+  color: var(--primary-color) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 50px !important;
+  padding: 10px 24px !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 600 !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  backdrop-filter: blur(8px) !important;
+  transition: all 0.3s ease !important;
+  box-shadow: var(--shadow) !important;
   cursor: pointer !important;
 }
 
 #nc-root button:hover {
-  background: rgba(244, 201, 93, 0.1) !important;
-  border-color: var(--neon-gold) !important;
-  box-shadow: 0 0 20px rgba(244, 201, 93, 0.4) !important;
+  background-color: var(--bg-light) !important;
   transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-hover) !important;
 }
 
 /* Primary Action Buttons */
 #nc-root button[color="primary"],
 #nc-root button:has(span:contains("Publish")),
 #nc-root button:has(span:contains("Save")) {
-  background: linear-gradient(135deg, var(--neon-gold), var(--neon-orange)) !important;
-  color: #0f172a !important;
+  background: var(--gradient-accent) !important;
+  color: var(--primary-color) !important;
   border: none !important;
-  box-shadow: 0 10px 20px rgba(244, 201, 93, 0.4) !important;
+  box-shadow: 0 10px 20px rgba(244, 201, 93, 0.3) !important;
 }
 
 #nc-root button[color="primary"]:hover {
-  transform: translateY(-3px) scale(1.05) !important;
-  box-shadow: 0 15px 30px rgba(244, 201, 93, 0.6) !important;
+  background: transparent !important;
+  background-color: #fff !important;
+  color: var(--secondary-color) !important;
+  border: 2px solid var(--secondary-color) !important;
+  padding: 8px 22px !important; 
+  box-shadow: 0 0 30px rgba(244, 201, 93, 0.4) !important;
 }
 
-/* Scrollbars */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  background: rgba(11, 17, 32, 0.8);
-}
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--neon-gold), var(--neon-orange));
-  border-radius: 10px;
-  border: 2px solid #0b1120;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--neon-orange), var(--neon-gold));
+/* 7. MEDIA LIBRARY MODAL */
+#nc-root [role="dialog"] {
+  background-color: var(--bg-light) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25) !important;
 }
 
-/* Identity Modal */
-iframe#netlify-identity-widget {
-  background: rgba(11, 17, 32, 0.85) !important;
-  backdrop-filter: blur(30px) !important;
+#nc-root [role="dialog"] header,
+#nc-root [role="dialog"] footer {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+#nc-root [role="dialog"] h1,
+#nc-root [role="dialog"] h2,
+#nc-root [role="dialog"] div {
+  color: var(--text-dark) !important;
+}
+
+#nc-root [role="dialog"] [role="button"] {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+}
+
+#nc-root [role="dialog"] [role="button"]:hover {
+  border-color: var(--secondary-color) !important;
+}
+
+/* 8. MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  #nc-root > div > div {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  #nc-root aside {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding-right: 0 !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  #nc-root main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  #nc-root main a {
+    margin-bottom: 15px !important;
+  }
 }
