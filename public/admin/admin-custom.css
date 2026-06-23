@@ -1,175 +1,219 @@
 /* ==========================================================================
-   PREMIUM CUSTOM STYLES FOR DOLLY DIGITAL STUDIO ADMIN PORTAL
+   ULTRA PREMIUM MINIMALIST STYLES FOR DOLLY DIGITAL STUDIO ADMIN PORTAL
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-/* GLOBAL RESETS & STYLING */
-body {
-  font-family: 'Outfit', sans-serif !important;
-  background-color: #0b1120 !important;
-  color: #e2e8f0 !important;
+:root {
+  --bg-main: #09090b; /* zinc-950 */
+  --bg-panel: #18181b; /* zinc-900 */
+  --bg-panel-hover: #27272a; /* zinc-800 */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(255, 255, 255, 0.25);
+  --text-primary: #fafafa; /* zinc-50 */
+  --text-secondary: #a1a1aa; /* zinc-400 */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+  --radius-md: 8px;
+  --radius-sm: 6px;
 }
 
-/* 1. CUSTOM IDENTITY/LOGIN PANEL STYLING */
-#netlify-identity-widget,
-.netlify-identity-widget {
-  font-family: 'Outfit', sans-serif !important;
+/* Global Typography & Background */
+body, html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: var(--bg-main) !important;
+  color: var(--text-primary) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
-/* Netlify Identity Modal Override */
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* 1. NETLIFY IDENTITY/LOGIN MODAL */
 iframe#netlify-identity-widget {
-  background: rgba(11, 17, 32, 0.85) !important;
-  backdrop-filter: blur(20px) !important;
+  background: rgba(9, 9, 11, 0.8) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
 }
 
-/* 2. DECAP CMS APPLICATION PANEL OVERRIDES */
+/* 2. DECAP CMS APPLICATION PANEL */
 .nc-app-container {
-  background-color: #0b1120 !important;
+  background-color: var(--bg-main) !important;
 }
 
-/* Top Navigation Bar */
+/* Header / Top Navigation - Sleek Glassmorphism */
 header {
-  background: rgba(15, 23, 42, 0.95) !important;
-  border-bottom: 2px solid rgba(244, 201, 93, 0.3) !important;
-  backdrop-filter: blur(12px) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  background: rgba(9, 9, 11, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  box-shadow: none !important;
 }
 
 header a, header button {
-  color: #f8fbff !important;
+  color: var(--text-secondary) !important;
   font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  transition: color 0.2s ease !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 header a:hover, header button:hover {
-  color: #f4c95d !important;
+  color: var(--text-primary) !important;
 }
 
-/* Sidebar Collections Panel */
+/* Sidebar Navigation */
 aside {
-  background-color: #0f172a !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
-  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.2) !important;
+  background-color: var(--bg-main) !important;
+  border-right: 1px solid var(--border-subtle) !important;
 }
 
 aside a {
-  border-radius: 8px !important;
-  margin: 4px 8px !important;
-  padding: 10px 15px !important;
-  color: #94a3b8 !important;
-  transition: all 0.3s ease !important;
+  border-radius: var(--radius-sm) !important;
+  margin: 6px 16px !important;
+  padding: 8px 12px !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.2s ease !important;
+  font-size: 0.9rem !important;
+  font-weight: 400 !important;
 }
 
 aside a.active {
-  background: linear-gradient(135deg, #f4c95d 0%, #ff7a59 100%) !important;
-  color: #0f172a !important;
-  font-weight: 600 !important;
-  box-shadow: 0 8px 20px rgba(244, 201, 93, 0.25) !important;
+  background-color: var(--bg-panel) !important;
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--shadow-sm) !important;
 }
 
 aside a:hover:not(.active) {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  color: #f8fbff !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  color: var(--text-primary) !important;
 }
 
-/* Main Content Area */
-main {
-  background-color: #0b1120 !important;
-}
-
-/* Dashboard Cards (Collection Entries) */
+/* Collection Cards (Dashboard Entries) */
 .nc-collection-page-card {
-  background: rgba(15, 23, 42, 0.6) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  border-radius: 12px !important;
-  backdrop-filter: blur(8px) !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background-color: var(--bg-panel) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
   padding: 16px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: var(--shadow-sm) !important;
 }
 
 .nc-collection-page-card:hover {
-  transform: translateY(-4px) !important;
-  border-color: rgba(244, 201, 93, 0.4) !important;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
+  transform: translateY(-2px) !important;
+  background-color: var(--bg-panel-hover) !important;
+  border-color: rgba(255,255,255,0.15) !important;
+  box-shadow: var(--shadow-lg) !important;
 }
 
-/* Editor Inputs & Fields */
+/* Editor Panels */
 .nc-control-pane-widget {
-  background: #0f172a !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 10px !important;
-  padding: 20px !important;
-  margin-bottom: 24px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 0 24px 0 !important;
+  margin-bottom: 0 !important;
+  box-shadow: none !important;
 }
 
-.nc-control-pane-widget:focus-within {
-  border-color: #f4c95d !important;
-  box-shadow: 0 0 15px rgba(244, 201, 93, 0.15) !important;
-}
-
+/* Labels */
 .nc-control-pane-label {
-  color: #f4c95d !important;
-  font-weight: 600 !important;
-  font-size: 0.95rem !important;
-  letter-spacing: 0.5px !important;
-  margin-bottom: 10px !important;
+  color: var(--text-secondary) !important;
+  font-weight: 500 !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
+  margin-bottom: 8px !important;
 }
 
-/* Text Fields, Textareas, Select Elements */
+/* Inputs, Textareas, Selects */
 input[type="text"],
 input[type="email"],
 input[type="number"],
 textarea,
-select {
-  background-color: #0b1120 !important;
-  color: #f8fbff !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 8px !important;
+select,
+.nc-control-pane-widget div[role="textbox"] {
+  background-color: var(--bg-panel) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-sm) !important;
   padding: 12px 16px !important;
-  font-family: 'Outfit', sans-serif !important;
-  transition: all 0.3s ease !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  transition: all 0.2s ease !important;
+  box-shadow: var(--shadow-sm) !important;
+  width: 100% !important;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="number"]:focus,
 textarea:focus,
-select:focus {
+select:focus,
+.nc-control-pane-widget div[role="textbox"]:focus {
   outline: none !important;
-  border-color: #f4c95d !important;
-  box-shadow: 0 0 8px rgba(244, 201, 93, 0.25) !important;
+  border-color: var(--border-focus) !important;
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Premium Publishing Buttons */
-.nc-app-editor-btn-publish {
-  background: linear-gradient(135deg, #f4c95d 0%, #ff7a59 100%) !important;
-  color: #0f172a !important;
+/* Main Action Buttons (Publish, Save) */
+.nc-app-editor-btn-publish,
+button[class*="nc-app-editor-btn-publish"] {
+  background-color: var(--text-primary) !important;
+  color: var(--bg-main) !important;
   font-weight: 600 !important;
+  font-family: 'Inter', sans-serif !important;
   border: none !important;
-  border-radius: 8px !important;
-  box-shadow: 0 8px 20px rgba(244, 201, 93, 0.3) !important;
-  transition: all 0.3s ease !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 8px 16px !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all 0.2s ease !important;
 }
 
-.nc-app-editor-btn-publish:hover {
-  transform: translateY(-1px) !important;
-  box-shadow: 0 12px 25px rgba(244, 201, 93, 0.45) !important;
+.nc-app-editor-btn-publish:hover,
+button[class*="nc-app-editor-btn-publish"]:hover {
+  background-color: #ffffff !important;
+  transform: scale(1.02) !important;
 }
 
-/* Media Upload Box */
+/* Secondary Buttons */
+button {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Media Library Box */
 .nc-media-library-card {
-  background: #0f172a !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  border-radius: 12px !important;
+  background-color: var(--bg-panel) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
 }
 
-/* Custom list items drag/drop wrappers */
+/* Drag/Drop List Items */
 .nc-list-editor-item {
-  background: rgba(15, 23, 42, 0.3) !important;
-  border: 1px dashed rgba(255, 255, 255, 0.15) !important;
-  border-radius: 12px !important;
+  background-color: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
   margin-bottom: 16px !important;
-  padding: 16px !important;
+  padding: 20px !important;
+}
+
+.nc-list-editor-item:hover {
+  border-color: rgba(255, 255, 255, 0.1) !important;
 }
